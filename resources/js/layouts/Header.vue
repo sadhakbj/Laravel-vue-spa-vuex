@@ -1,4 +1,3 @@
-
 <template>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -24,6 +23,6 @@
 
 <script>
 export default {
-  name: "header"
+  name: "app-header"
 };
 </script>

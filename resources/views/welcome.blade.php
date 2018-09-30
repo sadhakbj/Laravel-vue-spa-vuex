@@ -1,29 +1,3 @@
-{{--
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-
-<body>
-    <div id="app">
-        <app></app>
-    </div>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
-
-</html> --}}
-
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -36,23 +10,23 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <div id="app">
-        <app></app>
+    <main id="app"></main>
 
-
-    </div>
+    <!-- Scripts -->
+    <script>
+        window.baseUri = "{{ trim(config('app.url'), '/') }}";
+        window.apiRoutes = {!! json_encode(getApiRoutes()) !!}
+    </script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 
 </html>
