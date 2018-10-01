@@ -1,9 +1,9 @@
 require("./bootstrap");
 
 import Vue from "vue";
-import Router from "./routes";
 import MainApp from "./MainApp";
 import stores from "./stores/index";
+import Router from "./routes";
 
 /**
  * Initialize v-toaster
