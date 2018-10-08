@@ -10,7 +10,6 @@ Staging Link : NA
 Project is on [code climate](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex).
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/maintainability)](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/test_coverage)](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex/test_coverage)
 
 ## Getting Started
@@ -41,8 +40,6 @@ This project can be cloned from github repo:
 * ```php artisan serve```
 
 ## Running the tests
-
-To run test you must create devcheckv2Test database
 
 * Full PHPUnit test ``` ./vendor/bin/phpunit   ```
 * PHPUnit Test watch ``` npm run tdd```
