@@ -1,70 +1,69 @@
 <template>
-    <div class="py-4 main">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Login to system</div>
+    <container>
+        <div class="col-md-8">
+            <card>
+                <template slot="title">Login </template>
 
-                        <div class="card-body">
-                            <form @submit.prevent="handleLogin">
+                <template slot="body">
+                    <form @submit.prevent="handleLogin">
 
-                                <div class="form-group row">
-                                    <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" v-model="credentials.email" class="form-control" name="email" autofocus>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>Message goes here</strong>
-                                        </span>
-                                    </div>
+                            <div class="col-md-6">
+                                <input id="email" type="email" v-model="credentials.email" :class="{'form-control': true, 'is-invalid': form.hasError('email')}" name="email" autofocus>
+                                <span v-if="form.hasError('email')" class="invalid-feedback" role="alert">
+                                    <strong>{{ form.getError('email') }}</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" v-model="credentials.password" :class="{'form-control': true, 'is-invalid': form.hasError('email')}" name="password">
+                                <span v-if="form.hasError('password')" class="invalid-feedback" role="alert">
+                                    <strong>{{ form.getError('password') }}</strong>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember">
+
+                                    <label class="form-check-label" for="remember">
+                                        Remember me
+                                    </label>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
 
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" v-model="credentials.password" class="form-control" name="password">
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>Message goes here</strong>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember">
-
-                                            <label class="form-check-label" for="remember">
-                                                Remember me
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Login
-                                        </button>
-
-                                        <!-- <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <!-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a> -->
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </form>
+                </template>
+            </card>
         </div>
-    </div>
+    </container>
 </template>
 
 <script>
 import AuthService from "../../../services/AuthService";
+import Form from "../../../services/FormService";
+import Container from "../../../components/Container";
+import Card from "../../../components/Card";
 
 export default {
   name: "login",
@@ -73,22 +72,28 @@ export default {
       credentials: {
         email: "",
         password: ""
-      }
+      },
+      form: new Form()
     };
   },
-
+  components: {
+    Container,
+    Card
+  },
   methods: {
     handleLogin() {
       AuthService.login(this.credentials)
         .then(user => {
-          console.log(user);
           // dispatch calls action , commit calls mutations
           this.$store.dispatch("global/setCurrentUser", user);
           this.$toaster.success("Login successful.");
           this.$router.push("/dashboard");
         })
         .catch(error => {
-          this.$toaster.error("Login failed.");
+          if (error.response.status === 422) {
+            this.form.record(error.response.data.errors);
+            this.$toaster.error("Login failed.");
+          }
         });
     }
   }

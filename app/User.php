@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -27,4 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Encrypt the password while savinf it.
+     *
+     * @param string $password
+     */
+    public function setPasswordAttribute(string $password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 }

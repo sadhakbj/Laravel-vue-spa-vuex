@@ -1,13 +1,13 @@
 <template>
   <div>
-    
+
     <layout>
-    <transition name="fade">
-      <keep-alive>
+      <transition name="slide-fade">
+        <keep-alive>
           <router-view></router-view>
-      </keep-alive>
-    </transition>
-  </layout>
+        </keep-alive>
+      </transition>
+    </layout>
 
   </div>
 </template>
