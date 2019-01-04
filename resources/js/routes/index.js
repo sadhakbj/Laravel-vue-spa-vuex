@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { Home, Login, Register, Dashboard } from "../modules";
+import { Home, Login, Register, Dashboard, CreateAuthor } from "../modules";
 import Store from "./../stores";
 
 Vue.use(VueRouter);
@@ -29,6 +29,13 @@ const routes = [
     {
         path: "/dashboard",
         component: Dashboard,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/authors/create",
+        component: CreateAuthor,
         meta: {
             requiresAuth: true
         }

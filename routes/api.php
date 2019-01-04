@@ -18,10 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/auth/login', 'Api\AuthController@login')->name('auth.login');
-Route::post('/auth/register', 'Api\AuthController@register')->name('auth.register');
+$this->group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    $this->post('login', 'AuthController@login')->name('login');
+    $this->post('register', 'AuthController@register')->name('register');
+    $this->get('current-user', 'AuthController@getCurrentUser')->name('current-user')->middleware('auth:api');
+    $this->delete('logout', 'AuthController@logOut')->name('log-out')->middleware('auth:api');
+});
+
+
 Route::get('/users/list', function () {
     $users = app(User::class)->all();
 
     return response()->json($users);
 })->name('users.list');
+
+Route::resource('/authors', 'AuthorController');

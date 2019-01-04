@@ -67,7 +67,7 @@
     </container>
 </template>
 
-<script type="text/es6">
+<script type="text/ecmascript-6">
 import Container from "../../../components/Container";
 import Card from "../../../components/Card";
 import AuthService from "../../../services/AuthService";
@@ -95,6 +95,7 @@ export default {
         .catch(error => {
           if (error.response.status === 422) {
             this.form.record(error.response.data.errors);
+            this.$toaster.error("The form has some validation errors.");
           }
         });
     }

@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "node-sass": "^4.11.0",
         "v-toaster": "^1.0.3",
         "vue-router": "^3.0.1",
         "vuex": "^3.0.1"
