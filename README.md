@@ -28,7 +28,7 @@ What things you need to install the software and how to install them
 
 This project can be cloned from github repo:
 
-* ```git clone git@github.com:puncoz/Laravel-vue-spa-vuex.git```
+* ```git clone git@github.com:sadhakbj/Laravel-vue-spa-vuex.git```
 * ```composer install```
 * ```cd Laravel-vue-spa-vuex```
 * ```cp .env.example .env```
