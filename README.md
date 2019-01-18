@@ -7,10 +7,10 @@ Staging Link : NA
 
 ## Code Quality and Test Coverage
 
-Project is on [code climate](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex).
+Project is on [code climate](https://codeclimate.com/github/sadhakbj/Laravel-vue-spa-vuex).
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/maintainability)](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/test_coverage)](https://codeclimate.com/github/puncoz/Laravel-vue-spa-vuex/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/maintainability)](https://codeclimate.com/github/sadhakbj/Laravel-vue-spa-vuex/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2b8b29594c0e53c2d524/test_coverage)](https://codeclimate.com/github/sadhakbj/Laravel-vue-spa-vuex/test_coverage)
 
 ## Getting Started
 
@@ -29,6 +29,7 @@ What things you need to install the software and how to install them
 This project can be cloned from github repo:
 
 * ```git clone git@github.com:puncoz/Laravel-vue-spa-vuex.git```
+* ```composer install```
 * ```cd Laravel-vue-spa-vuex```
 * ```cp .env.example .env```
 * ```php artisan key:generate```
