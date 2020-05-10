@@ -62,7 +62,7 @@ We use Capistrano for deployment to stagging and production server
 
 ## Versioning
 
-We use [Git](https://git-scm.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/puncoz/Laravel-vue-spa-vuex/tags).
+We use [Git](https://git-scm.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/sadhakbj/Laravel-vue-spa-vuex/tags).
 
 ## Style Guide For Vue Components
 
